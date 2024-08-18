@@ -10,7 +10,12 @@ public class Main {
         Matrix m = new Matrix(file);
         m.showMatrix();
 
-        m.analyzeMatrix();
+//        m.analyzeMatrix();
+
+        System.out.println();
+        System.out.println();
+        System.out.println();
+
 
         ArrayList arrayList = new ArrayList(m.rows - 1);
         arrayList.insertOnArrayList(m);
