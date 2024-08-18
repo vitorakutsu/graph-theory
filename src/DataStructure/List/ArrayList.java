@@ -23,8 +23,14 @@ public class ArrayList {
     }
 
     public void showArrayList() {
-        for(int i = 0; i < array.length; i++) {
+        System.out.println("+---+-------------------------+");
+        System.out.println("| # |  Lista de Adjacência    |");
+        System.out.println("+---+-------------------------+");
+
+        for (int i = 0; i < array.length; i++) {
+            System.out.printf("| %d | ", i);
             this.array[i].showList();
+            System.out.println("+---+-------------------------+");
         }
     }
 }
