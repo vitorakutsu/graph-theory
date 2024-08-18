@@ -10,13 +10,11 @@ public class Main {
         Matrix m = new Matrix(file);
         m.showMatrix();
 
-        System.out.println();
+        m.analyzeMatrix();
 
-//        m.analyzeMatrix();
+        ArrayList arrayList = new ArrayList(m.rows - 1);
+        arrayList.insertOnArrayList(m);
 
-//        ArrayList arrayList = new ArrayList(m.rows - 1);
-//        arrayList.insertOnArrayList(m);
-//
-//        arrayList.showArrayList();
+        arrayList.showArrayList();
     }
 }
