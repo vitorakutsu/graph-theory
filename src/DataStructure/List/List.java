@@ -14,34 +14,34 @@ public class List {
         this.node = node;
     }
 
-    public List insertOnList(Matrix matrix, int row) {
-        Node node = new Node();
+    public void insertOnList(Matrix matrix, int row) {
+        Node head = null;
+        Node tail = null;
+
         for(int i = 0; i < matrix.cols; i++) {
             if(matrix.getMatrix()[row][i].equals("1")) {
-                System.out.println(i);
-                if(node == null)
-                    node = new Node(i);
-                else {
-                    Node nodeAux = node;
+                Node newNode = new Node(i);
 
-                    while(nodeAux.getNext() != null) {
-                        nodeAux = nodeAux.getNext();
-                    }
-
-                    nodeAux.setNext(new Node(i));
+                if (head == null) {
+                    head = newNode;
+                    tail = newNode;
+                } else {
+                    tail.setNext(newNode);
+                    tail = newNode;
                 }
             }
         }
 
-        return new List(node);
+        this.node = head;
     }
 
     public void showList() {
         Node node = this.node;
-        while(node != null) {
-            System.out.printf(node.getInfo() + "\t");
-        }
 
+        while (node != null) {
+            System.out.printf("%d  ", node.getInfo());
+            node = node.getNext();
+        }
         System.out.println();
     }
 }
