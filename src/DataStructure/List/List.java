@@ -3,7 +3,7 @@ package DataStructure.List;
 import DataStructure.Matrix.Matrix;
 
 public class List {
-    private Node node;
+    public Node node;
 
     public List() {
         this.node = null;

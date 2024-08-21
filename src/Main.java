@@ -1,25 +1,26 @@
 import DataStructure.List.ArrayList;
 import DataStructure.Matrix.Matrix;
 import File.File;
+import Menu.Menu;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        File file = new File("/Users/vitoreyki/Library/Mobile Documents/com~apple~CloudDocs/VITOR EYKI/BCC/Termo_6A/Teoria dos Grafos/Code/Matriz/src/Assets/file.txt");
+        File file = new File("C:\\Users\\Pedro Filitto\\Desktop\\6 Termo\\TG\\graph-theory\\src\\Assets\\file.txt");
+
         Matrix m = new Matrix(file);
-        m.showMatrix();
+        ArrayList arrayList = new ArrayList(m.rows - 1);
+
+        Menu menu = new Menu(m, arrayList);
+
+        menu.showMenu();
 
 //        m.analyzeMatrix();
 
         System.out.println();
         System.out.println();
         System.out.println();
-
-
-        ArrayList arrayList = new ArrayList(m.rows - 1);
-        arrayList.insertOnArrayList(m);
-
-        arrayList.showArrayList();
     }
 }

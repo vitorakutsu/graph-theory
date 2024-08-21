@@ -1,5 +1,7 @@
 package DataStructure.Matrix;
 
+import DataStructure.List.List;
+import DataStructure.List.Node;
 import File.File;
 
 import javax.swing.border.Border;
@@ -17,6 +19,12 @@ public class Matrix {
         this.matrix = new String[rows][cols];
 
         this.readMatrix(file);
+    }
+
+    public Matrix(int rows){
+        this.rows = rows;
+        this.cols = rows;
+        this.matrix = new String[rows][cols];
     }
 
     public String[][] getMatrix() {
@@ -186,6 +194,28 @@ public class Matrix {
         System.out.println(this.isDirected() ? isRegular : inDegreeRegular + "\n" + outDegreeRegular);
         System.out.println(isSimple);
         System.out.println(isDirected);
+    }
+
+    public void insertOnMatrix(int row, List list){
+        Node node = list.node;
+        int cont = 0;
+
+        while(node != null && cont < this.matrix.length){
+            if(cont == node.getInfo()){
+                this.matrix[row][cont] = "1";
+                node = node.getNext();
+            } else {
+                this.matrix[row][cont] = "0";
+            }
+            cont++;
+        }
+
+        if(node == null){
+            while(cont < this.matrix.length){
+                this.matrix[row][cont] = "0";
+                cont++;
+            }
+        }
     }
 }
 

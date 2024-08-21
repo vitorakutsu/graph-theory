@@ -33,4 +33,13 @@ public class ArrayList {
             System.out.println("+---+-------------------------+");
         }
     }
+
+    public Matrix convertListToMatrix(){
+        Matrix matrix = new Matrix(this.array.length);
+        for (int i = 0; i < array.length; i++) {
+            List list = this.array[i];
+            matrix.insertOnMatrix(i, list);
+        }
+        return matrix;
+    }
 }
