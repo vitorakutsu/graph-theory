@@ -21,9 +21,9 @@ public class Matrix {
         this.readMatrix(file);
     }
 
-    public Matrix(int rows){
+    public Matrix(int rows, int cols){
         this.rows = rows;
-        this.cols = rows;
+        this.cols = cols;
         this.matrix = new String[rows][cols];
     }
 
@@ -196,12 +196,12 @@ public class Matrix {
         System.out.println(isDirected);
     }
 
-    public void insertOnMatrix(int row, List list){
+    public void insertOnMatrix(int row, List list) {
         Node node = list.node;
         int cont = 0;
 
-        while(node != null && cont < this.matrix.length){
-            if(cont == node.getInfo()){
+        while (node != null && cont < this.cols) {
+            if (cont == node.getInfo()) {
                 this.matrix[row][cont] = "1";
                 node = node.getNext();
             } else {
@@ -210,11 +210,9 @@ public class Matrix {
             cont++;
         }
 
-        if(node == null){
-            while(cont < this.matrix.length){
-                this.matrix[row][cont] = "0";
-                cont++;
-            }
+        while (cont < this.cols) {
+            this.matrix[row][cont] = "0";
+            cont++;
         }
     }
 }

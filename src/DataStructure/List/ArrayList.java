@@ -34,12 +34,14 @@ public class ArrayList {
         }
     }
 
-    public Matrix convertListToMatrix(){
-        Matrix matrix = new Matrix(this.array.length);
+    public Matrix convertListToMatrix() {
+        Matrix matrix = new Matrix(this.array.length + 1, this.array.length);
+
         for (int i = 0; i < array.length; i++) {
             List list = this.array[i];
-            matrix.insertOnMatrix(i, list);
+            matrix.insertOnMatrix(i + 1, list);
         }
+
         return matrix;
     }
 }
