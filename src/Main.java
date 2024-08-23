@@ -16,11 +16,5 @@ public class Main {
         Menu menu = new Menu(m, arrayList);
 
         menu.showMenu();
-
-//        m.analyzeMatrix();
-
-        System.out.println();
-        System.out.println();
-        System.out.println();
     }
 }

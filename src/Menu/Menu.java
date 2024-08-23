@@ -35,6 +35,8 @@ public class Menu {
             if (resp.equalsIgnoreCase("M")) {
                 m.showMatrix();
                 System.out.println();
+                m.analyzeMatrix();
+                System.out.println();
             } else if (resp.equalsIgnoreCase("L")) {
                 arrayList.insertOnArrayList(m);
                 arrayList.showArrayList();
@@ -78,6 +80,8 @@ public class Menu {
                 Matrix matrix = arrayList.convertListToMatrix();
                 matrix.showMatrix();
                 System.out.println();
+                matrix.analyzeMatrix();
+                System.out.println();
                 showMenu();
             }
 
@@ -85,9 +89,9 @@ public class Menu {
     }
 
     public void menuOptions() {
-        System.out.println("Deseja iniciar mostrando a Matriz ou a Lista de Adjacência?");
-        System.out.println("M - Matriz");
-        System.out.println("L - Lista de Adjacência");
+        System.out.println("Selecione uma opção:");
+        System.out.println("M - Ver Matriz");
+        System.out.println("L - Ver Lista de Adjacência");
         System.out.println("C - Acessar conversor");
         System.out.println("S - Sair");
     }
