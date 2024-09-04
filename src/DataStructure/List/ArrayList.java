@@ -31,7 +31,7 @@ public class ArrayList {
         System.out.println("+---+-------------------------+");
 
         for (int i = 0; i < array.length; i++) {
-            System.out.printf("| %d | ", i);
+            System.out.printf("| %c | ", i + 65);
             this.array[i].showList();
             System.out.println("+---+-------------------------+");
         }
@@ -66,7 +66,8 @@ public class ArrayList {
         System.out.println("Pontos de Articulação:");
         for (int i = 0; i < articulationPoints.length; i++) {
             if (articulationPoints[i]) {
-                System.out.println(i);
+                System.out.printf("%c", i + 65);
+                System.out.println();
             }
         }
     }

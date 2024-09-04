@@ -39,7 +39,7 @@ public class List {
         Node node = this.node;
 
         while (node != null) {
-            System.out.printf("%d  ", node.getInfo());
+            System.out.printf("%c  ", node.getInfo() + 65);
             node = node.getNext();
         }
         System.out.println();
