@@ -2,8 +2,11 @@ package DataStructure.List;
 
 import DataStructure.Matrix.Matrix;
 
+import java.util.Arrays;
+
 public class ArrayList {
     private List[] array;
+    private int time = 0;
 
     public ArrayList(int size) {
         this.array = new List[size];
@@ -43,5 +46,61 @@ public class ArrayList {
         }
 
         return matrix;
+    }
+
+    public void findArticulationPoints() {
+        boolean[] visited = new boolean[array.length];
+        int[] disc = new int[array.length];
+        int[] low = new int[array.length];
+        int[] parent = new int[array.length];
+        boolean[] articulationPoints = new boolean[array.length];
+
+        Arrays.fill(parent, -1);
+
+        for (int i = 0; i < array.length; i++) {
+            if (!visited[i]) {
+                dfs(i, visited, disc, low, parent, articulationPoints);
+            }
+        }
+
+        System.out.println("Pontos de Articulação:");
+        for (int i = 0; i < articulationPoints.length; i++) {
+            if (articulationPoints[i]) {
+                System.out.println(i);
+            }
+        }
+    }
+
+    private void dfs(int u, boolean[] visited, int[] disc, int[] low, int[] parent, boolean[] articulationPoints) {
+        int children = 0;
+        visited[u] = true;
+
+        disc[u] = low[u] = ++time;
+
+        Node node = array[u].node;
+        while (node != null) {
+            int v = node.getInfo();
+
+            if (!visited[v]) {
+                children++;
+                parent[v] = u;
+
+                dfs(v, visited, disc, low, parent, articulationPoints);
+
+                low[u] = Math.min(low[u], low[v]);
+
+                if (parent[u] == -1 && children > 1) {
+                    articulationPoints[u] = true;
+                }
+
+                if (parent[u] != -1 && low[v] >= disc[u]) {
+                    articulationPoints[u] = true;
+                }
+            } else if (v != parent[u]) {
+                low[u] = Math.min(low[u], disc[v]);
+            }
+
+            node = node.getNext();
+        }
     }
 }

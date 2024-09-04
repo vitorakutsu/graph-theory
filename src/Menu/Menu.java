@@ -41,6 +41,9 @@ public class Menu {
                 arrayList.insertOnArrayList(m);
                 arrayList.showArrayList();
                 System.out.println();
+                System.out.println();
+                arrayList.findArticulationPoints();
+                System.out.println();
             } else if (resp.equalsIgnoreCase("C")) {
                 System.out.println();
                 showMenuConverter();

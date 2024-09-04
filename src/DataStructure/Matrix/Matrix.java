@@ -159,7 +159,7 @@ public class Matrix {
     }
 
     private static String renderMessage(boolean compare, String success, String failed) {
-        return compare ? "\033[0;32m" + success : "\033[0;31m" + failed;
+        return compare ? success : failed;
     }
 
     private static void simulateLoading(String message) {
@@ -179,7 +179,8 @@ public class Matrix {
     }
 
     public void analyzeMatrix() {
-        simulateLoading("Analisando a matriz!");
+        String colorDefault = "\033[0m";
+        simulateLoading(colorDefault + "Analisando a matriz!");
 
         String isComplete = renderMessage(this.isComplete(), "Completo", "Não é Completo");
         String isSimple = renderMessage(this.isSimple(), "Simples", "Não é Simples");
