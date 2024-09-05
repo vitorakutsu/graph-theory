@@ -63,13 +63,18 @@ public class ArrayList {
             }
         }
 
-        System.out.println("Pontos de Articulação:");
+        System.out.println("+------------------------+");
+        System.out.println("|   Ponto | Articulação  |");
+        System.out.println("+------------------------+");
+
         for (int i = 0; i < articulationPoints.length; i++) {
-            if (articulationPoints[i]) {
-                System.out.printf("%c", i + 65);
-                System.out.println();
-            }
+            char point = (char) (i + 65);
+            String isArticulation = articulationPoints[i] ? "\u001B[32mSim\u001B[0m    " : "Não";
+
+            System.out.printf("|   %c   |      %-7s   |\n", point, isArticulation);
         }
+
+        System.out.println("+------------------------+");
     }
 
     private void dfs(int u, boolean[] visited, int[] disc, int[] low, int[] parent, boolean[] articulationPoints) {
