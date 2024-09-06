@@ -57,6 +57,8 @@ public class ArrayList {
 
         Arrays.fill(parent, -1);
 
+        System.out.println("Iniciando a busca para encontrar pontos de articulação...");
+
         for (int i = 0; i < array.length; i++) {
             if (!visited[i]) {
                 dfs(i, visited, disc, low, parent, articulationPoints);
@@ -78,27 +80,25 @@ public class ArrayList {
     }
 
     private void dfs(int u, boolean[] visited, int[] disc, int[] low, int[] parent, boolean[] articulationPoints) {
-        int children = 0;
         visited[u] = true;
-
         disc[u] = low[u] = ++time;
+        int children = 0;
+
+        System.out.printf("Visitando o ponto %c\n", u + 65);
+        System.out.println();
 
         Node node = array[u].node;
         while (node != null) {
             int v = node.getInfo();
 
             if (!visited[v]) {
-                children++;
                 parent[v] = u;
-
+                children++;
                 dfs(v, visited, disc, low, parent, articulationPoints);
-
                 low[u] = Math.min(low[u], low[v]);
-
                 if (parent[u] == -1 && children > 1) {
                     articulationPoints[u] = true;
                 }
-
                 if (parent[u] != -1 && low[v] >= disc[u]) {
                     articulationPoints[u] = true;
                 }
@@ -108,5 +108,8 @@ public class ArrayList {
 
             node = node.getNext();
         }
+
+        System.out.printf("Ponto %c: Ord.Visita = %d, Menor = %d\n", u + 65, disc[u], low[u]);
+        System.out.println();
     }
 }
